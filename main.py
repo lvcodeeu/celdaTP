@@ -2,6 +2,7 @@ import pygame
 
 from settings import Settings
 from cursor import Cursor
+from graphics import Graphic
 
 class CeldaTP:
     """La clase principal para iniciar el juego"""
@@ -15,12 +16,12 @@ class CeldaTP:
         pygame.display.set_icon(self.settings.icono)
 
         self.cursor = Cursor()
+        self.graphics = Graphic()
 
     def run_game(self):
         """Inicia el bucle principal del juego"""
         while True:
             self.show_game()
-            self.eventos()
 
     def change_cursor(self):
         """Cambia el cursor normal por una mano"""
@@ -32,15 +33,9 @@ class CeldaTP:
         pygame.display.init()
         pygame.mouse.set_visible(False)
         self.screen.blit(self.settings.fondo_intro, (0, 0))
+        self.graphics.boton_empezar()
         self.change_cursor()
         pygame.display.flip()
-
-    def eventos(self):
-        """Define los eventos del ratón y teclado"""
-        # teclado
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
 
 if __name__ == '__main__':
     celdatp = CeldaTP()
