@@ -2,6 +2,8 @@ import pygame
 
 from settings import Settings
 from events import Eventos
+from narrative import Narrativa
+from player import Player
 
 class Graphic():
     """Una clase para almacenar las imagenes sueltas"""
@@ -10,6 +12,8 @@ class Graphic():
         self.settings = Settings()
         self.screen = self.settings.screen
         self.eventos = Eventos()
+        self.narrativa = Narrativa()
+        self.player = Player()
 
         #Inicio
         self.graphic_flag = 1
@@ -55,3 +59,6 @@ class Graphic():
         """Crea la pantalla de presentacion"""
         self.eventos.salir()
         self.screen.blit(self.fondo_presentacion, (0, 0))
+        self.narrativa.mostrar_textos_presentacion()
+        #aqui hay que mostrar el cajetin para que escriba el nombre
+        self.player.pedir_nombre_jugador()
