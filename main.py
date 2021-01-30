@@ -32,8 +32,7 @@ class CeldaTP:
         """Muestra las pantallas del juego"""
         pygame.display.init()
         pygame.mouse.set_visible(False)
-        self.screen.blit(self.settings.fondo_intro, (0, 0))
-        self.graphics.boton_empezar()
+        self.graphics.ventana_actual()
         self.change_cursor()
         pygame.display.flip()
 
