@@ -12,13 +12,16 @@ class Settings:
                                               self.screen_height))
         self.icono = pygame.image.load("images/icono.png")
 
-        # Margenes
+        #Color naranja de los textos
+        self.texto_naranja = (100, 36.5, 0)
+
+        # Márgenes
         self.margen_x = 80
         self.margen_y = 80
         self.margen_x2 = 880
         self.margen_y2 = 460
 
-        #Posiciones textos presentacion
+        #Posiciones textos presentación
         self.posicion_y_2 = 130
         self.posicion_y_3 = 155
         self.posicion_y_4 = 205

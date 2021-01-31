@@ -1,18 +1,21 @@
 import pygame
 
 from settings import Settings
+from text_templates import Templates
 
 class Player():
     """Una clase con los parámetros del jugador"""
     def __init__(self):
         """Inicia los parámetros del jugador"""
         self.settings = Settings()
+        self.templates = Templates(
 
+        )
         self.nombre_jugador_list = []
         self.nombre_jugador = ""
+        self.nombre_introducido = False
         self.tecla_pulsada = pygame.key.get_pressed()
         self.tecla_incorrecta = False
-        self.nombre_introducido = False
 
     def pedir_nombre_jugador(self):
         """Solicita el nombre al jugador y lo guarda en una cadena"""
@@ -81,9 +84,15 @@ class Player():
                 else:
                     self.aviso_tecla_incorrecta()
         self.nombre_jugador = "".join(self.nombre_jugador_list)
-        self.fuente_del_texto = pygame.font.SysFont('Nimbus Mono PS Italic', 30)
-        self.surface_texto = self.fuente_del_texto.render(self.nombre_jugador, False, (255, 255, 255))
-        self.settings.screen.blit(self.surface_texto,(self.settings.margen_x,self.settings.posicion_y_nombre))
+        self.templates.plantilla_mostrar_textos(self.nombre_jugador)
+        self.settings.screen.blit(self.templates.surface_texto,(self.settings.margen_x,self.settings.posicion_y_nombre))
+
+    def mostrar_ultimos_textos_presentacion(self):
+        """Muestra la parte final de la presentacion"""
+        if self.nombre_introducido == True:
+            self.presentacion_10 = "Vaya, ¿te llamas %s?" %self.nombre_jugador
+            self.templates.plantilla_mostrar_textos(self.presentacion_10)
+            self.settings.screen.blit(self.templates.surface_texto,(self.settings.margen_x,self.settings.margen_y))
 
     def aviso_tecla_incorrecta(self):
         """Indica al usuario que la tecla introducida no es válida"""
