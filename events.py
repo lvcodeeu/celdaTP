@@ -20,3 +20,6 @@ class Eventos():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     self.click_para_continuar = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    self.click_para_continuar = True

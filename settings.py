@@ -13,7 +13,7 @@ class Settings:
         self.icono = pygame.image.load("images/icono.png")
 
         #Color naranja de los textos
-        self.texto_naranja = (100, 36.5, 0)
+        self.texto_naranja = (170, 60, 0)
 
         # Márgenes
         self.margen_x = 80

@@ -8,9 +8,7 @@ class Player():
     def __init__(self):
         """Inicia los parámetros del jugador"""
         self.settings = Settings()
-        self.templates = Templates(
-
-        )
+        self.templates = Templates()
         self.nombre_jugador_list = []
         self.nombre_jugador = ""
         self.nombre_introducido = False

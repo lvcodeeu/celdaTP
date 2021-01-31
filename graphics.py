@@ -46,7 +46,6 @@ class Graphic():
         self.settings.screen.blit(self.fondo_intro, (0, 0))
         self.settings.screen.blit(self.empezar_white, (self.empezar_xy))
         self.posicion_raton_x, self.posicion_raton_y = pygame.mouse.get_pos()
-        print(pygame.mouse.get_pos())
         #cambiar color del boton empezar
         if self.posicion_raton_x > self.empezar_x and self.posicion_raton_x < self.empezar_x2:
             if self.posicion_raton_y > self.empezar_y and self.posicion_raton_y < self.empezar_y2:
@@ -54,7 +53,6 @@ class Graphic():
                 #activar el boton
                 for event in pygame.event.get():
                     if event.type == pygame.MOUSEBUTTONDOWN:
-                        #self.ventana_presentacion()
                         self.graphic_flag = 2
         else:
             self.settings.screen.blit(self.empezar_white, (self.empezar_xy))
@@ -76,7 +74,7 @@ class Graphic():
         self.narrativa.bromear_con_nombre()
         self.eventos.hacer_click_para_continuar()
         if self.eventos.click_para_continuar == True:
-            self.graphic_flag = 2
+            self.graphic_flag = 4
 
     def ventana_carcel(self):
         """Crea la ventana de inicio en la cárcel"""
