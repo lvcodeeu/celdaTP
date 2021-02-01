@@ -1,2 +1,2 @@
 # celdaTP
-A simple graphic adventure game make in python
+A simple graphic adventure game made in python
