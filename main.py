@@ -3,12 +3,15 @@ import pygame
 from settings import Settings
 from cursor import Cursor
 from graphics import Graphic
+from sounds import Sounds
 
 class CeldaTP:
     """La clase principal para iniciar el juego"""
     def __init__(self):
         """Inicia el juego y crea los recursos"""
+        pygame.mixer.pre_init(44100, 16, 2, 4096)
         pygame.init()
+        pygame.mixer.init()
 
         self.settings = Settings()
         self.screen = self.settings.screen
@@ -17,9 +20,11 @@ class CeldaTP:
 
         self.cursor = Cursor()
         self.graphics = Graphic()
+        self.sounds = Sounds()
 
     def run_game(self):
         """Inicia el bucle principal del juego"""
+        self.sounds.intro_music()
         while True:
             self.show_game()
 

@@ -10,5 +10,5 @@ class Templates:
 
     def plantilla_mostrar_textos(self, texto_a_mostrar):
         """Genera una plantilla para renderizar los textos, a falta de usar blit() para mostrarlos"""
-        self.fuente_del_texto = pygame.font.SysFont('Nimbus Mono PS Italic', 30)
+        self.fuente_del_texto = pygame.font.Font("fonts/nimbus_mono_l.ttf", 20)
         self.surface_texto = self.fuente_del_texto.render(texto_a_mostrar, False, (self.settings.texto_naranja))

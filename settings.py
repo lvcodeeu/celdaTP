@@ -13,13 +13,20 @@ class Settings:
         self.icono = pygame.image.load("images/icono.png")
 
         #Color naranja de los textos
-        self.texto_naranja = (170, 60, 0)
+        self.texto_naranja = (200, 70, 10)
 
         # Márgenes
         self.margen_x = 80
         self.margen_y = 80
         self.margen_x2 = 880
         self.margen_y2 = 460
+
+        #Botón empezar
+        self.empezar_x = 350
+        self.empezar_y = 440
+        self.empezar_x2 = 609
+        self.empezar_y2 = 483
+        self.empezar_xy = (self.empezar_x, self.empezar_y)
 
         #Posiciones textos presentación
         self.posicion_y_2 = 130
@@ -34,3 +41,5 @@ class Settings:
         self.posicion_x_flecha = 20
         self.posicion_y_flecha = 407
         self.posicion_y_nombre = 405
+        self.posicion_x_tecla_incorrecta = 680
+        self.posicion_y_tecla_incorrecta = 417
