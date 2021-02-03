@@ -22,8 +22,8 @@ class Narrativa():
         self.presentacion_2 = "Una historia en la que puedes encontrar a tu yo interior"
         self.presentacion_3 = "o a mi tu exterior, o al otro que entra y sale."
         self.presentacion_4 = "¿Crees que puedes conseguir terminar el juego?"
-        self.presentacion_5 = "Te reto a que seas sincero, y compruebes en realidad hasta dónde eres"
-        self.presentacion_6 = "capaz de llegar."
+        self.presentacion_5 = "Te reto a que seas sincero, y compruebes en realidad hasta dónde"
+        self.presentacion_6 = "eres capaz de llegar."
         self.presentacion_7 = "¡Buena suerte! (la vas a necesitar…)"
         self.presentacion_8 = "En primer lugar, dime tu nombre, y pulsa Enter:"
         self.presentacion_9 = "aqui hay que meter el nombre del jugador"
@@ -34,8 +34,8 @@ class Narrativa():
         #Bromas nombre
         self.numero_respuesta = random.randint(1, 5)
         self.broma_nombre_1 = "Yo tuve un perro que se llamaba igual."
-        self.broma_nombre_2 = "¿Así no se llama una comida del norte de Europa que huele muy mal?"
-        self.broma_nombre_3 = "Si lo pronuncias 3 veces por la noche mirando al espejo te entra cagalera seguro."
+        self.broma_nombre_2 = "¿Así no se llama una comida búlgara que huele muy mal?"
+        self.broma_nombre_3 = "Con ese nombre no quiero ni imaginarme tu cara."
         self.broma_nombre_4 = "Qué nombre más feo. Te compadezco."
         self.broma_nombre_5 = "¿No serás familia del tío ese tan raro que sale por la tele?"
         self.broma_finalizada = False
@@ -80,4 +80,4 @@ class Narrativa():
             self.settings.screen.blit(self.templates.surface_texto,(self.settings.margen_x,self.settings.posicion_y_2))
 
         self.templates.plantilla_mostrar_textos(self.presentacion_final)
-        self.settings.screen.blit(self.templates.surface_texto,(self.settings.margen_x,self.settings.posicion_y_4))
+        self.settings.screen.blit(self.templates.surface_texto,(self.settings.margen_x,self.settings.posicion_y_3))

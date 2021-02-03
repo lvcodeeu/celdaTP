@@ -1,4 +1,5 @@
 import pygame
+from datetime import datetime
 
 from settings import Settings
 from cursor import Cursor
@@ -10,6 +11,8 @@ class CeldaTP:
     def __init__(self):
         """Inicia el juego y crea los recursos"""
         pygame.mixer.pre_init(44100, 16, 2, 4096)
+
+        self.clock = pygame.time.Clock()
         pygame.init()
         pygame.mixer.init()
 
@@ -40,6 +43,7 @@ class CeldaTP:
         self.graphics.ventana_actual()
         self.change_cursor()
         pygame.display.flip()
+        pygame.time.Clock().tick(180)
 
 if __name__ == '__main__':
     celdatp = CeldaTP()

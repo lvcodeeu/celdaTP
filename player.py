@@ -1,4 +1,3 @@
-from datetime import datetime
 import pygame
 
 from settings import Settings
@@ -14,11 +13,13 @@ class Player():
         self.nombre_jugador = ""
         self.nombre_introducido = False
         self.tecla_pulsada = pygame.key.get_pressed()
-        self.tecla_incorrecta = False
         self.imagen_tecla_incorrecta = pygame.image.load("images/tecla_incorrecta.png")
+        self.frames_counter = 0
+        self.tecla_incorrecta = False
 
     def pedir_nombre_jugador(self):
         """Solicita el nombre al jugador y lo guarda en una cadena"""
+        self.mostrar_aviso_tecla_incorrecta()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -82,7 +83,8 @@ class Player():
                 elif event.key == pygame.K_RETURN:
                     self.nombre_introducido = True
                 else:
-                    self.aviso_tecla_incorrecta()
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
         self.nombre_jugador = "".join(self.nombre_jugador_list)
         self.templates.plantilla_mostrar_textos(self.nombre_jugador)
         self.settings.screen.blit(self.templates.surface_texto,(self.settings.margen_x,self.settings.posicion_y_nombre))
@@ -94,13 +96,15 @@ class Player():
             self.templates.plantilla_mostrar_textos(self.presentacion_10)
             self.settings.screen.blit(self.templates.surface_texto,(self.settings.margen_x,self.settings.margen_y))
 
-    def aviso_tecla_incorrecta(self):
-        """Indica al usuario que la tecla introducida no es válida"""
-        self.inicio_reloj = int(datetime.utcnow().timestamp())
-        print(self.inicio_reloj)
-        self.tecla_incorrecta = True
+    def mostrar_aviso_tecla_incorrecta(self):
+        """Muestra la imagen de tecla incorrecta"""
         if self.tecla_incorrecta == True:
             self.settings.screen.blit(self.imagen_tecla_incorrecta,(self.settings.posicion_x_tecla_incorrecta,self.settings.posicion_y_tecla_incorrecta))
-            if int(datetime.utcnow().timestamp()) - self.inicio_reloj > 3000:
-                print("este es el segundo %i", int(datetime.utcnow().timestamp()))
-                self.tecla_incorrecta = False
+            self.frames_counter += 1
+        self.aviso_tecla_incorrecta()
+
+    def aviso_tecla_incorrecta(self):
+        """Indica al usuario que la tecla introducida no es válida"""
+        if self.frames_counter >= 60:
+            self.frames_counter = 0
+            self.tecla_incorrecta = False

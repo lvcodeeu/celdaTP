@@ -39,7 +39,7 @@ class Settings:
         self.posicion_y_9 = 380
         self.posicion_y_10 = 455
         self.posicion_x_flecha = 20
-        self.posicion_y_flecha = 407
+        self.posicion_y_flecha = 412
         self.posicion_y_nombre = 405
-        self.posicion_x_tecla_incorrecta = 680
-        self.posicion_y_tecla_incorrecta = 417
+        self.posicion_x_tecla_incorrecta = 80
+        self.posicion_y_tecla_incorrecta = 450
