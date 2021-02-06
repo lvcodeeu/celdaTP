@@ -43,7 +43,7 @@ class CeldaTP:
         self.graphics.ventana_actual()
         self.change_cursor()
         pygame.display.flip()
-        pygame.time.Clock().tick(180)
+        #pygame.time.Clock().tick(240)
 
 if __name__ == '__main__':
     celdatp = CeldaTP()

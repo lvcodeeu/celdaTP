@@ -16,13 +16,16 @@ class Graphic():
 
         #Inicio
         self.graphic_flag = 1
-        self.fondo_intro = pygame.image.load("images/intro.png")
-        self.empezar_white = pygame.image.load("images/empezar_w.png")
-        self.empezar_black = pygame.image.load("images/empezar_b.png")
+        self.fondo_intro = pygame.image.load("images/backgrounds/intro.png")
+        self.empezar_white = pygame.image.load("images/buttons/empezar_w.png")
+        self.empezar_black = pygame.image.load("images/buttons/empezar_b.png")
         self.boton_empezar_rect = self.empezar_white.get_rect()
 
         #presentacion
-        self.fondo_presentacion = pygame.image.load("images/fondo_presentacion.png")
+        self.fondo_presentacion = pygame.image.load("images/backgrounds/fondo_presentacion.png")
+
+        #escena_celda
+        self.escena_celda = pygame.image.load("images/backgrounds/escena_celda.png")
 
     def ventana_actual(self):
         """Es la ventana que se muestra en todo momento"""
@@ -74,4 +77,4 @@ class Graphic():
     def ventana_carcel(self):
         """Crea la ventana de inicio en la cárcel"""
         self.eventos.salir()
-        self.settings.screen.blit(self.fondo_presentacion, (0, 0))
+        self.settings.screen.blit(self.escena_celda, (0, 0))

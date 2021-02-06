@@ -13,7 +13,7 @@ class Player():
         self.nombre_jugador = ""
         self.nombre_introducido = False
         self.tecla_pulsada = pygame.key.get_pressed()
-        self.imagen_tecla_incorrecta = pygame.image.load("images/tecla_incorrecta.png")
+        self.imagen_tecla_incorrecta = pygame.image.load("images/buttons/tecla_incorrecta.png")
         self.frames_counter = 0
         self.tecla_incorrecta = False
 

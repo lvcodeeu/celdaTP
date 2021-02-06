@@ -10,7 +10,7 @@ class Settings:
         self.screen_height = 540
         self.screen = pygame.display.set_mode((self.screen_width,
                                               self.screen_height))
-        self.icono = pygame.image.load("images/icono.png")
+        self.icono = pygame.image.load("images/buttons/icono.png")
 
         #Color naranja de los textos
         self.texto_naranja = (200, 70, 10)

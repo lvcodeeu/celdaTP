@@ -27,7 +27,7 @@ class Narrativa():
         self.presentacion_7 = "¡Buena suerte! (la vas a necesitar…)"
         self.presentacion_8 = "En primer lugar, dime tu nombre, y pulsa Enter:"
         self.presentacion_9 = "aqui hay que meter el nombre del jugador"
-        self.flecha_derecha = pygame.image.load("images/right_arrow_white.png")
+        self.flecha_derecha = pygame.image.load("images/buttons/right_arrow_orange.png")
         self.mensaje_error_en_la_tecla = "Si tocas esa tecla otra vez se puede destruir el juego."
         self.presentacion_final = "En cualquier caso, la historia comienza así..."
 
