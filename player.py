@@ -1,4 +1,5 @@
 import pygame
+import datetime
 
 from settings import Settings
 from text_templates import Templates
@@ -14,11 +15,12 @@ class Player():
         self.nombre_introducido = False
         self.tecla_pulsada = pygame.key.get_pressed()
         self.imagen_tecla_incorrecta = pygame.image.load("images/buttons/tecla_incorrecta.png")
-        self.frames_counter = 0
         self.tecla_incorrecta = False
+        self.justo_despues = 0
 
     def pedir_nombre_jugador(self):
         """Solicita el nombre al jugador y lo guarda en una cadena"""
+        self.secundero = int(datetime.datetime.utcnow().timestamp())
         self.mostrar_aviso_tecla_incorrecta()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -82,9 +84,47 @@ class Player():
                     del self.nombre_jugador_list[-1]
                 elif event.key == pygame.K_RETURN:
                     self.nombre_introducido = True
-                else:
+                elif event.key == pygame.K_0:
+                    self.justo_despues = self.secundero + 2
                     self.tecla_incorrecta = True
                     self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_1:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_2:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_3:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_4:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_5:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_6:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_7:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_8:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+                elif event.key == pygame.K_9:
+                    self.justo_despues = self.secundero + 2
+                    self.tecla_incorrecta = True
+                    self.mostrar_aviso_tecla_incorrecta()
+
         self.nombre_jugador = "".join(self.nombre_jugador_list)
         self.templates.plantilla_mostrar_textos(self.nombre_jugador)
         self.settings.screen.blit(self.templates.surface_texto,(self.settings.margen_x,self.settings.posicion_y_nombre))
@@ -100,11 +140,9 @@ class Player():
         """Muestra la imagen de tecla incorrecta"""
         if self.tecla_incorrecta == True:
             self.settings.screen.blit(self.imagen_tecla_incorrecta,(self.settings.posicion_x_tecla_incorrecta,self.settings.posicion_y_tecla_incorrecta))
-            self.frames_counter += 1
         self.aviso_tecla_incorrecta()
 
     def aviso_tecla_incorrecta(self):
         """Indica al usuario que la tecla introducida no es válida"""
-        if self.frames_counter >= 60:
-            self.frames_counter = 0
+        if self.secundero == self.justo_despues:
             self.tecla_incorrecta = False

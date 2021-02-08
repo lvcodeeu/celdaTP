@@ -12,8 +12,10 @@ class Settings:
                                               self.screen_height))
         self.icono = pygame.image.load("images/buttons/icono.png")
 
-        #Color naranja de los textos
+        #Color de los textos
         self.texto_naranja = (200, 70, 10)
+        self.texto_blanco = (255, 255, 255)
+        self.texto_amarillo = (160, 190, 0)
 
         # Márgenes
         self.margen_x = 80
@@ -21,12 +23,17 @@ class Settings:
         self.margen_x2 = 880
         self.margen_y2 = 460
 
+        """Posiciones"""
         #Botón empezar
         self.empezar_x = 350
         self.empezar_y = 440
         self.empezar_x2 = 609
         self.empezar_y2 = 483
         self.empezar_xy = (self.empezar_x, self.empezar_y)
+
+        #Posicion texto flotante
+        self.flotante_x = 480
+        self.flotante_y = 60
 
         #Posiciones textos presentación
         self.posicion_y_2 = 130
@@ -43,3 +50,13 @@ class Settings:
         self.posicion_y_nombre = 405
         self.posicion_x_tecla_incorrecta = 80
         self.posicion_y_tecla_incorrecta = 450
+
+        #Posicion texto barra info
+        self.barra_info_x = 960
+        self.barra_info_y = 390
+
+        #Posiciones ventana_carcel
+        self.prota_x = 705
+        self.prota_x2 = 820
+        self.prota_y = 234
+        self.prota_y2 = 342

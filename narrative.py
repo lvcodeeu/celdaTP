@@ -40,6 +40,22 @@ class Narrativa():
         self.broma_nombre_5 = "¿No serás familia del tío ese tan raro que sale por la tele?"
         self.broma_finalizada = False
 
+        #Tooltips ventana_carcel
+        self.prota_tooltip = "Ese eres tú"
+        self.poster_tooltip = "Póster sensual"
+        self.carta_tooltip = "Carta manuscrita"
+        self.cajon_tooltip = "Cajón de la mesa"
+        self.chicle_tooltip = "Chicle mordisqueado asqueroso"
+        self.puerta_tooltip = "Puerta de la celda"
+
+        #Mensajes flotantes ventana_carcel
+        self.prota_flotante = "¿Cómo habré llegado hasta aquí?"
+        self.cajon_flotante = "El cajón está cerrado."
+        self.chicle_flotante_1 = "No pienso tocar eso"
+        self.chicle_flotante_2 = "En serio, no me hagas tocarlo"
+        self.chicle_flotante_3 = "Vale, me lo como"
+        self.puerta_flotante = "No puedo abrir la puerta. Está cerrada con llave."
+
     def mostrar_textos_presentacion(self):
         """Muestra los textos de la presentacion"""
         pygame.font.init()
