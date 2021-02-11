@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 
 class Eventos():
     """Una clase para encapsular los eventos"""

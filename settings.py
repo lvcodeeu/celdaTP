@@ -32,8 +32,8 @@ class Settings:
         self.empezar_xy = (self.empezar_x, self.empezar_y)
 
         #Posicion texto flotante
-        self.flotante_x = 480
-        self.flotante_y = 60
+        self.flotante_x = 960
+        self.flotante_y = 30
 
         #Posiciones textos presentación
         self.posicion_y_2 = 130
@@ -60,3 +60,23 @@ class Settings:
         self.prota_x2 = 820
         self.prota_y = 234
         self.prota_y2 = 342
+        self.papel_x = 105
+        self.papel_x2 = 170
+        self.papel_y = 210
+        self.papel_y2 = 240
+        self.cajon_x = 190
+        self.cajon_x2 = 230
+        self.cajon_y = 245
+        self.cajon_y2 = 282
+        self.chicle_x = 240
+        self.chicle_x2 = 250
+        self.chicle_y = 205
+        self.chicle_y2 = 215
+        self.puerta_x = 535
+        self.puerta_x2 = 660
+        self.puerta_y = 0
+        self.puerta_y2 = 280
+        self.poster_x = 842
+        self.poster_x2 = 913
+        self.poster_y = 70
+        self.poster_y2 = 240
