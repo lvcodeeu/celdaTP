@@ -56,6 +56,16 @@ class Narrativa():
         self.chicle_flotante_3 = "Vale, me lo como."
         self.puerta_flotante = "No puedo abrir la puerta. Está cerrada con llave."
 
+        #Tooltips ventana_poster
+        self.poster_poster_tooltip = "Mujer preciosa"
+        self.poster_chincheta_tooltip = "Chincheta medio suelta"
+
+        #Mensajes flotantes ventana_poster
+        self.poster_poster_flotante = "Tengo la impresión de estar encadenado perpetuamente."
+        self.poster_chincheta_flotante = "Esta chincheta parece un poco suelta. Igual si tiro de ella..."
+        self.poster_chincheta_flotante_2 = "Vale. La arranco."
+
+
     def mostrar_textos_presentacion(self):
         """Muestra los textos de la presentacion"""
         pygame.font.init()

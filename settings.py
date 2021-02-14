@@ -80,3 +80,21 @@ class Settings:
         self.poster_x2 = 913
         self.poster_y = 70
         self.poster_y2 = 240
+
+        #Posiciones ventana_poster
+        self.poster_poster_x = 370
+        self.poster_poster_x2 = 590
+        self.poster_poster_y = 85
+        self.poster_poster_y2 = 350
+        self.poster_poster2_x = 370
+        self.poster_poster2_x2 = 570
+        self.poster_poster2_y = 350
+        self.poster_poster2_y2 = 370
+        self.poster_chincheta_x = 571
+        self.poster_chincheta_x2 = 590
+        self.poster_chincheta_y = 351
+        self.poster_chincheta_y2 = 370
+        self.poster_volver_x = 23
+        self.poster_volver_x2 = 205
+        self.poster_volver_y = 324
+        self.poster_volver_y2 = 355
