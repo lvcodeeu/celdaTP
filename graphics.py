@@ -41,7 +41,13 @@ class Graphic():
         self.escena_muerte_chicle_2 = pygame.image.load("images/deaths/muerte_chicle2.png")
         self.escena_muerte_chicle_3 = pygame.image.load("images/deaths/muerte_chicle3.png")
         self.escena_muerte_chicle_fin = pygame.image.load("images/deaths/muerte_chicle_fin.png")
+        #chincheta
+        self.escena_muerte_chincheta_1 = pygame.image.load("images/deaths/muerte_chincheta1.png")
+        self.escena_muerte_chincheta_2 = pygame.image.load("images/deaths/muerte_chincheta2.png")
+        self.escena_muerte_chincheta_3 = pygame.image.load("images/deaths/muerte_chincheta3.png")
+        self.escena_muerte_chincheta_fin = pygame.image.load("images/deaths/muerte_chincheta_fin.png")
 
+        """Tooltips"""
         #tooltips
         self.clave_prota = 0
         self.tooltip_prota_activo = False
@@ -64,10 +70,6 @@ class Graphic():
         self.contador_de_chicle = 0
         self.contador_imagenes_chicle = 1
 
-        #broma Chincheta
-        self.contador_de_chincheta = 0
-        self.contador_imagenes_chincheta = 1
-
     def ventana_actual(self):
         """Es la ventana que se muestra en todo momento"""
         if self.graphic_flag == 1:
@@ -82,19 +84,21 @@ class Graphic():
             self._mensajes_info_ventana_carcel()
             self.generador_mensajes_flotantes()
         elif self.graphic_flag == 5:
-            self.ventana_muerte_chicle()
+            #self.ventana_muerte_chicle()
+            self.ventana_muerte(self.escena_muerte_chicle_1, self.escena_muerte_chicle_2, self.escena_muerte_chicle_3, self.escena_muerte_chicle_fin)
         elif self.graphic_flag == 6:
             self.ventana_poster()
             self.secundero = int(datetime.datetime.utcnow().timestamp())
             self._mensajes_info_ventana_poster()
             self.generador_mensajes_flotantes()
         elif self.graphic_flag == 7:
-            self.ventana_muerte_chincheta()
-            self.generador_mensajes_flotantes()
+            self.ventana_muerte(self.escena_muerte_chincheta_1, self.escena_muerte_chincheta_2, self.escena_muerte_chincheta_3, self.escena_muerte_chincheta_fin)
 
     def ventana_inicio(self):
         """Crea la pantalla inicial y el boton empezar e incluye el cambio de color al posar el raton"""
         self.eventos.salir()
+        self.contadores_a_cero()
+        self.contador_imagenes_chicle = 1
         self.settings.screen.blit(self.fondo_intro, (0, 0))
         self.settings.screen.blit(self.empezar_white, (self.settings.empezar_xy))
         #cambiar color del boton empezar
@@ -105,7 +109,8 @@ class Graphic():
                 #activar el boton
                 for event in pygame.event.get():
                     if event.type == pygame.MOUSEBUTTONDOWN:
-                        self.graphic_flag = 2
+                        if event.button == 1:
+                            self.graphic_flag = 2
         else:
             self.settings.screen.blit(self.empezar_white, (self.settings.empezar_xy))
 
@@ -137,6 +142,7 @@ class Graphic():
         """Crea la ventana del poster"""
         self.eventos.salir()
         self.settings.screen.blit(self.escena_poster, (0,0))
+        self.generador_mensajes_flotantes()
         self.posicion_raton_x, self.posicion_raton_y = pygame.mouse.get_pos()
         if self.posicion_raton_x > self.settings.poster_volver_x and self.posicion_raton_x < self.settings.poster_volver_x2:
             self.settings.screen.blit(self.volver_naranja, (self.settings.poster_volver_x, self.settings.poster_volver_y))
@@ -146,56 +152,39 @@ class Graphic():
                 self.volver_carcel()
         else:
             self.settings.screen.blit(self.volver_naranja, (self.settings.poster_volver_x, self.settings.poster_volver_y))
+            self._mensajes_info_ventana_poster()
 
-    def ventana_muerte_chicle(self):
-        """Crea la ventana para mostrar la muerte por chicle"""
+    def ventana_muerte(self, escena_muerte_1, escena_muerte_2, escena_muerte_3, escena_muerte_fin):
+        """Crea las escenas para las muertes"""
         self.eventos.salir()
         if self.contador_imagenes_chicle == 1:
-            self.settings.screen.blit(self.escena_muerte_chicle_1, (0, 0))
-            self._avanzar_chicle()
+            self.settings.screen.blit(escena_muerte_1, (0, 0))
+            self._avanzar_muerte(escena_muerte_1, escena_muerte_2, escena_muerte_3, escena_muerte_fin)
         elif self.contador_imagenes_chicle == 2:
-            self.settings.screen.blit(self.escena_muerte_chicle_2, (0, 0))
-            self._avanzar_chicle()
+            self.settings.screen.blit(escena_muerte_2, (0, 0))
+            self._avanzar_muerte(escena_muerte_1, escena_muerte_2, escena_muerte_3, escena_muerte_fin)
         elif self.contador_imagenes_chicle == 3:
-            self.settings.screen.blit(self.escena_muerte_chicle_3, (0, 0))
-            self._avanzar_chicle()
+            self.settings.screen.blit(escena_muerte_3, (0, 0))
+            self._avanzar_muerte(escena_muerte_1, escena_muerte_2, escena_muerte_3, escena_muerte_fin)
         elif self.contador_imagenes_chicle == 4:
-            self.settings.screen.blit(self.escena_muerte_chicle_fin, (0, 0))
-            self._avanzar_chicle()
+            self.settings.screen.blit(escena_muerte_fin, (0, 0))
+            self._avanzar_muerte(escena_muerte_1, escena_muerte_2, escena_muerte_3, escena_muerte_fin)
         elif self.contador_imagenes_chicle == 5:
-            sys.exit()
+            self.graphic_flag = 1
 
-    def ventana_muerte_chincheta(self):
-        """Crea la ventana para mostrar la muerte por la chincheta del poster"""
-        self.eventos.salir()
-        if self.contador_imagenes_chicle == 1:
-            self.settings.screen.blit(self.escena_muerte_chicle_1, (0, 0))
-            self._avanzar_chicle()
-        elif self.contador_imagenes_chicle == 2:
-            self.settings.screen.blit(self.escena_muerte_chicle_2, (0, 0))
-            self._avanzar_chicle()
-        elif self.contador_imagenes_chicle == 3:
-            self.settings.screen.blit(self.escena_muerte_chicle_3, (0, 0))
-            self._avanzar_chicle()
-        elif self.contador_imagenes_chicle == 4:
-            self.settings.screen.blit(self.escena_muerte_chicle_fin, (0, 0))
-            self._avanzar_chicle()
-        elif self.contador_imagenes_chicle == 5:
-            sys.exit()
-
-    def _avanzar_chicle(self):
-        """Avanza con la muerte del chicle"""
+    def _avanzar_muerte(self, escena_muerte_1, escena_muerte_2, escena_muerte_3, escena_muerte_fin):
+        """Avanza los pasos para la escena de la muerte"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     self.contador_imagenes_chicle += 1
-                    self.ventana_muerte_chicle()
+                    self.ventana_muerte(escena_muerte_1, escena_muerte_2, escena_muerte_3, escena_muerte_fin)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     self.contador_imagenes_chicle += 1
-                    self.ventana_muerte_chicle()
+                    self.ventana_muerte(escena_muerte_1, escena_muerte_2, escena_muerte_3, escena_muerte_fin)
 
     def _mensajes_info_ventana_carcel(self):
         """Genera los tooltips de la ventana_carcel"""
@@ -267,7 +256,6 @@ class Graphic():
                     self.tooltip_puerta_activo = True
                 elif selector_tooltip == self.clave_chicle:
                     self.contador_de_chicle += 1
-                    self.contador_de_chincheta = 0
                     self.tooltip_chicle_activo = True
                 elif selector_tooltip == self.clave_cajon:
                     self.contadores_a_cero()
@@ -282,13 +270,11 @@ class Graphic():
                     self.contadores_a_cero()
                     self.tooltip_poster_poster_activo = True
                 elif selector_tooltip == self.clave_poster_chincheta:
-                    self.contador_de_chincheta += 1
-                    self.contador_de_chicle = 0
+                    self.contador_de_chicle += 1
                     self.tooltip_poster_chincheta_activo = True
 
     def contadores_a_cero(self):
-        """Pone los contadores de las bromas a cero"""
-        self.contador_de_chincheta = 0
+        """Pone los contadores de las muertes a cero"""
         self.contador_de_chicle = 0
 
     def generador_mensajes_flotantes(self):
@@ -339,14 +325,15 @@ class Graphic():
                 self.tooltip_poster_poster_activo = False
         #chincheta en ventana_poster
         elif self.tooltip_poster_chincheta_activo == True:
-            if self.contador_de_chincheta == 1:
+            if self.contador_de_chicle == 1:
                 self.mensaje_flotante(self.narrativa.poster_chincheta_flotante)
                 if self.secundero == self.justo_despues:
                     self.tooltip_poster_chincheta_activo = False
-            if self.contador_de_chincheta == 2:
+            if self.contador_de_chicle == 2:
                 self.mensaje_flotante(self.narrativa.poster_chincheta_flotante_2)
                 if self.secundero == self.justo_despues:
                     self.tooltip_poster_chincheta_activo = False
+                    self.graphic_flag = 7
 
     def mensaje_flotante(self, texto_a_mostrar):
         """Muestra el mensaje flotante al producirse el evento MOUSEBUTTONDOWN"""

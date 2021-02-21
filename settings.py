@@ -95,6 +95,6 @@ class Settings:
         self.poster_chincheta_y = 351
         self.poster_chincheta_y2 = 370
         self.poster_volver_x = 23
-        self.poster_volver_x2 = 205
-        self.poster_volver_y = 324
-        self.poster_volver_y2 = 355
+        self.poster_volver_x2 = 95
+        self.poster_volver_y = 355
+        self.poster_volver_y2 = 370
